@@ -105,15 +105,20 @@ section{position:relative;padding:120px 0}
 /* ===== SERVIZI ===== */
 #servizi{background:var(--ivory)}
 .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong)}
-.cat{padding:48px 30px 44px;border-left:1px solid var(--line);position:relative;transition:background .5s var(--ease)}
+.cat{padding:48px 30px 44px;border-left:1px solid var(--line);position:relative;transition:background .5s var(--ease),box-shadow .7s var(--ease);transform-style:preserve-3d;will-change:transform;-webkit-tap-highlight-color:transparent}
+.cat:hover,.cat.is-active{background:var(--ivory);box-shadow:0 34px 54px -30px rgba(74,64,52,.40),0 0 0 1px var(--line-strong);z-index:2}
 .cat:first-child{border-left:0}
 .cat::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .55s;z-index:0}
-.cat:hover::before{opacity:.65}
+.cat:hover::before,.cat.is-active::before{opacity:.65}
 .cat>*{position:relative;z-index:1}
-.cat svg{width:46px;height:46px;color:var(--accent-deep);margin-bottom:34px;transition:transform .6s var(--ease)}
-.cat:hover svg{transform:translateY(-4px)}
-.cat h3{font-size:clamp(1.3rem,1.9vw,1.6rem);margin-bottom:12px}
-.cat p{color:var(--ink-soft);font-size:.95rem;line-height:1.65}
+.cat>svg{width:46px;height:46px;color:var(--accent-deep);margin-bottom:34px;transition:transform .6s var(--ease);translate:0 0 26px}
+.cat:hover>svg,.cat.is-active>svg{transform:translateY(-4px)}
+.cat h3{font-size:clamp(1.3rem,1.9vw,1.6rem);margin-bottom:12px;translate:0 0 18px}
+.cat p{color:var(--ink-soft);font-size:.95rem;line-height:1.65;translate:0 0 10px}
+.cat .cat-arrow{position:absolute;top:26px;right:24px;width:42px;height:42px;border:1px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent-deep);background:rgba(252,249,242,.7);translate:0 0 32px;transition:background .45s var(--ease),color .45s,border-color .45s,transform .6s var(--ease),box-shadow .5s}
+.cat .cat-arrow svg{width:16px;height:16px;transition:transform .6s var(--ease)}
+.cat:hover .cat-arrow,.cat.is-active .cat-arrow,.cat .cat-arrow:focus-visible{background:var(--accent-deep);color:var(--ivory);border-color:var(--accent-deep);box-shadow:0 10px 20px -10px rgba(74,64,52,.55)}
+.cat .cat-arrow:hover svg{transform:translate(2px,-2px)}
 .svc-cta{margin-top:48px;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
 .svc-cta span{color:var(--ink-soft);font-size:.95rem}
 
@@ -178,9 +183,12 @@ section{position:relative;padding:120px 0}
 .map-link{font-size:.92rem;color:var(--accent-deep);border-bottom:1px solid var(--accent-deep)}
 .map-box{margin-top:26px;height:300px;border:1px solid var(--line-strong);background:var(--sand);position:relative;z-index:0}
 .map-box .leaflet-tile-pane{filter:sepia(.3) saturate(.7) contrast(.95) brightness(1.04)}
+.map-chip{position:absolute;left:12px;bottom:12px;z-index:1000;padding:9px 14px;font-size:.82rem;font-weight:500;background:rgba(252,249,242,.94);border:1px solid var(--line-strong);color:var(--accent-deep);border-radius:2px;transition:background .35s,color .35s}
+.map-chip:hover{background:var(--accent-deep);color:var(--ivory)}
 .map-pin{width:20px;height:20px;border-radius:50%;background:var(--accent-deep);border:3px solid var(--ivory);box-shadow:0 0 0 1px var(--accent-deep),0 6px 14px rgba(74,64,52,.4)}
 .parking-note{margin-top:26px;padding:16px 18px;border-left:2px solid var(--accent);font-size:.92rem;color:var(--ink-soft);background:rgba(252,249,242,.7);line-height:1.6}
 .parking-note strong{color:var(--ink);font-weight:500}
+.parking-link{display:inline-block;margin-left:2px;color:var(--accent-deep);border-bottom:1px solid var(--accent-deep);white-space:nowrap}
 .social-block{margin-top:44px}
 .social-row{display:flex;gap:14px;flex-wrap:wrap}
 .social-row a{display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 14px;border:1px solid var(--line-strong);border-radius:2px;font-size:.9rem;transition:background .35s,border-color .35s,color .35s}
@@ -270,21 +278,33 @@ section{position:relative;padding:120px 0}
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 44V20a7 7 0 0 1 14 0v24"/><path d="M19.500 15a4.500 4.500 0 0 1 9 0v6h-9Z"/><path d="M38 8l1 3 3 1-3 1-1 3-1-3-3-1 3-1ZM8 12l.7 2 2 .7-2 .7L8 17.500l-.7-2-2-.7 2-.7Z"/></svg>
           <h3>Unghie</h3>
           <p>Cura e bellezza di mani e piedi, con attenzione ai dettagli.</p>
+          <a class="cat-arrow" href="https://widget.treatwell.it/salone/centro-di-estetica-avanzata-nirvana/" target="_blank" rel="noopener noreferrer" aria-label="Scegli il servizio Unghie su Treatwell (si apre in una nuova scheda)" title="Scegli su Treatwell">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8.500 7H17v8.500"/></svg>
+          </a>
         </article>
         <article class="cat">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6C15 19 12 26 12 31a12 12 0 0 0 24 0c0-5-3-12-12-25Z"/><path d="M18 32a6 6 0 0 0 6 6"/></svg>
           <h3>Depilazione</h3>
           <p>Una pelle liscia e curata, nel comfort di un ambiente raffinato.</p>
+          <a class="cat-arrow" href="https://widget.treatwell.it/salone/centro-di-estetica-avanzata-nirvana/" target="_blank" rel="noopener noreferrer" aria-label="Scegli il servizio Depilazione su Treatwell (si apre in una nuova scheda)" title="Scegli su Treatwell">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8.500 7H17v8.500"/></svg>
+          </a>
         </article>
         <article class="cat">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6C14 6 12 16 12 23c0 10 6 19 12 19s12-9 12-19c0-7-2-17-12-17Z"/><path d="M18 23h4M26 23h4"/><path d="M20 32q4 3.500 8 0"/></svg>
           <h3>Viso</h3>
           <p>Trattamenti dedicati alla luminosità e al benessere della pelle.</p>
+          <a class="cat-arrow" href="https://widget.treatwell.it/salone/centro-di-estetica-avanzata-nirvana/" target="_blank" rel="noopener noreferrer" aria-label="Scegli il servizio Viso su Treatwell (si apre in una nuova scheda)" title="Scegli su Treatwell">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8.500 7H17v8.500"/></svg>
+          </a>
         </article>
         <article class="cat">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="24" cy="36" rx="15" ry="5.500"/><ellipse cx="24" cy="26" rx="10.500" ry="4.500"/><ellipse cx="24" cy="17" rx="6.500" ry="3.500"/></svg>
           <h3>Massaggio e Corpo</h3>
           <p>Momenti di relax profondo per ritrovare armonia e leggerezza.</p>
+          <a class="cat-arrow" href="https://widget.treatwell.it/salone/centro-di-estetica-avanzata-nirvana/" target="_blank" rel="noopener noreferrer" aria-label="Scegli il servizio Massaggio e Corpo su Treatwell (si apre in una nuova scheda)" title="Scegli su Treatwell">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8.500 7H17v8.500"/></svg>
+          </a>
         </article>
       </div>
 
@@ -400,11 +420,11 @@ section{position:relative;padding:120px 0}
           <h4>Dove trovarci</h4>
           <p class="addr">Via Emanuele De Deo, 40, 70126 Bari BA</p>
           <div class="map-actions">
-            <a class="btn btn-primary" href="https://www.google.com/maps/dir//Via+Emanuele+De+Deo,+40,+70126+Bari+BA/@41.1152963,16.8770206,16.39z/data=!4m17!1m8!3m7!1s0x1347e85b31869ad7:0x698d6912804fb95e!2sVia+Emanuele+De+Deo,+40,+70126+Bari+BA!3b1!8m2!3d41.1147127!4d16.8764077!16s%2Fg%2F11nntnq_p_!4m7!1m0!1m5!1m1!1s0x1347e85b31869ad7:0x698d6912804fb95e!2m2!1d16.8764077!2d41.1147127?entry=ttu&amp;g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Indicazioni stradali</a>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Emanuele+De+Deo+40+70126+Bari" target="_blank" rel="noopener noreferrer">Apri in Google Maps</a>
+            <a class="btn btn-primary" href="https://maps.app.goo.gl/EyqEHm1VvZ271FgQ6?g_st=iw" target="_blank" rel="noopener noreferrer">Indicazioni stradali</a>
+            <a class="map-link" href="https://maps.app.goo.gl/EyqEHm1VvZ271FgQ6?g_st=iw" target="_blank" rel="noopener noreferrer">Apri in Google Maps</a>
           </div>
-          <div class="map-box" id="map" role="region" aria-label="Mappa interattiva: Via Emanuele De Deo 40, Bari"></div>
-          <p class="parking-note">Parcheggio gratuito per i clienti presso <strong>Adrian Garage</strong>, Via Michele De Napoli 3C.</p>
+          <div class="map-box" id="map" role="region" aria-label="Mappa interattiva: Via Emanuele De Deo 40, Bari"><a class="map-chip" href="https://maps.app.goo.gl/EyqEHm1VvZ271FgQ6?g_st=iw" target="_blank" rel="noopener noreferrer">Apri in Google Maps</a></div>
+          <p class="parking-note">Grazie alla convenzione tra il Centro di Estetica Nirvana e il <strong>Garage Lattanzio 2</strong>, il parcheggio è gratuito per i clienti Nirvana. <a class="parking-link" href="https://share.google/MRIKqJpGfsxNckuex" target="_blank" rel="noopener noreferrer">Raggiungi il garage</a></p>
         </div>
       </div>
 
@@ -452,7 +472,43 @@ if(window.L){
   box.addEventListener('click',()=>map.scrollWheelZoom.enable());
   box.addEventListener('mouseleave',()=>map.scrollWheelZoom.disable());
 }else{
-  document.getElementById('map').innerHTML='<p style="padding:24px;font-size:.92rem;color:var(--ink-soft)">Mappa non disponibile: usa il pulsante “Indicazioni stradali”.</p>';
+  document.getElementById('map').innerHTML='<p style="padding:24px;font-size:.92rem;color:var(--ink-soft)">Mappa non disponibile: <a href="https://maps.app.goo.gl/EyqEHm1VvZ271FgQ6?g_st=iw" target="_blank" rel="noopener noreferrer" style="color:var(--accent-deep);border-bottom:1px solid var(--accent-deep)">apri la posizione su Google Maps</a>.</p>';
+}
+
+/* riquadri servizi: tilt 3D morbido */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const MAX=7,LIFT=22,EASE=.11;
+  document.querySelectorAll('.cat').forEach(card=>{
+    const st={rx:0,ry:0,tz:0,trx:0,try_:0,ttz:0,raf:0,hold:0,down:false};
+    const render=()=>{
+      st.rx+=(st.trx-st.rx)*EASE;st.ry+=(st.try_-st.ry)*EASE;st.tz+=(st.ttz-st.tz)*EASE;
+      const settled=Math.abs(st.trx-st.rx)<.01&&Math.abs(st.try_-st.ry)<.01&&Math.abs(st.ttz-st.tz)<.05;
+      if(settled&&st.trx===0&&st.try_===0&&st.ttz===0){card.style.transform='';st.rx=st.ry=st.tz=0;st.raf=0;return}
+      card.style.transform=`perspective(900px) translate3d(0,0,${st.tz.toFixed(2)}px) rotateX(${st.rx.toFixed(3)}deg) rotateY(${st.ry.toFixed(3)}deg)`;
+      st.raf=requestAnimationFrame(render);
+    };
+    const kick=()=>{if(!st.raf)st.raf=requestAnimationFrame(render)};
+    const aim=e=>{
+      const r=card.getBoundingClientRect();
+      const x=Math.max(-.5,Math.min(.5,(e.clientX-r.left)/r.width-.5));
+      const y=Math.max(-.5,Math.min(.5,(e.clientY-r.top)/r.height-.5));
+      st.try_=x*MAX*2;st.trx=-y*MAX*2;st.ttz=LIFT;kick();
+    };
+    const rest=()=>{st.trx=st.try_=st.ttz=0;card.classList.remove('is-active');kick()};
+    card.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){card.classList.add('is-active');aim(e)}});
+    card.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||st.down)aim(e)});
+    card.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')rest()});
+    card.addEventListener('pointerdown',e=>{
+      if(e.pointerType==='mouse')return;
+      clearTimeout(st.hold);st.down=true;card.classList.add('is-active');aim(e);
+    });
+    const release=e=>{
+      if(e.pointerType==='mouse')return;
+      st.down=false;clearTimeout(st.hold);st.hold=setTimeout(rest,450);
+    };
+    card.addEventListener('pointerup',release);
+    card.addEventListener('pointercancel',release);
+  });
 }
 
 /* carosello recensioni */
